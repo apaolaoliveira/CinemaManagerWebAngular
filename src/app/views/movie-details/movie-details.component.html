@@ -1,0 +1,41 @@
+<div class="container d-grip gap-3 y-4">
+
+    <div class="row ">
+        <div class="d-flex align-items-center">
+            <h2 class="text-light" id="tituloFilme">{{movie.title}}, ({{movie.launch}})</h2>
+            <div class="ms-auto text-end">
+                <button (click)="toggleFavorite(movie)" class="custom-favorito-button btn btn-warning text-black">
+                    <i [ngClass]="{'bi bi-heart-fill': isFavorite, 'bi bi-heart': !isFavorite}"></i>
+                    {{ isFavorite ? 'Remove from favorites' : 'Add to favorites' }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h5 class="text-light fst-italic" id="tituloFilme">{{movie.title}} </h5>
+    </div>
+
+
+    <div class="row gap-3">
+        <div class="col-lg-3">
+            <img class="img-fluid rounded-3" id="poster" src={{movie.poster}}>
+        </div>
+        <div class="col-lg">
+            <div class="ratio ratio-21x9 h-100">
+                <iframe class="rounded-3" id="iFrameTrailer" frameborder="0" allowfullscreen
+                    [src]="movie.trailer"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="d-flex m-3 gap-1 col-1" id="divGeneros" *ngFor="let genre of movie.genres">
+            <span class="badge rounded-pill fs-7 px-2 py-2 bg-warning text-dark">{{genre}}</span>
+        </div>
+    </div>
+
+    <div class="row border-top">
+        <h5 class="f-5 text-light align-items-justify " id="sinopse"> {{movie.overview}}</h5>
+    </div>    
+</div>

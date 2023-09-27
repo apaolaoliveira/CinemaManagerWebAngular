@@ -1,0 +1,41 @@
+<div class="container navbar-nav d-flex align-items-center">
+    <ul class="nav nav-underline text-warning">
+        <li class="nav-item">
+            <i class="bi bi-lightning-charge"></i>
+            <h2 
+                routerLink="/popular"
+                class="nav-link fs-3 fw-bold my-2 text-warning"
+                routerLinkActive="active"
+                >Popular</h2>
+        </li>
+
+        <li class="nav-item">
+            <i class="bi bi-clock"></i>
+            <h2 
+                routerLink="/launches"
+                class="nav-link fs-3 fw-bold my-2 text-warning" 
+                routerLinkActive="active"
+                >Lançamentos</h2>
+        </li>
+
+        <li class="nav-item">
+            <i class="bi bi-calendar3"></i>
+            <h2 
+                routerLink="/upcoming"
+                class="nav-link fs-3 fw-bold my-2 text-warning"
+                routerLinkActive="active"
+                >Em breve</h2>
+        </li>
+
+        <li class="nav-item">
+            <i class="bi bi-chat-heart"></i>
+            <h2 
+                routerLink="/favorites"
+                class="nav-link fs-3 fw-bold my-2 text-warning"
+                routerLinkActive="active"
+                >Favoritos</h2>
+        </li>
+    </ul>
+</div>
+
+<app-pagination></app-pagination>
