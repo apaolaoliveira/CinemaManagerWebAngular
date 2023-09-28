@@ -11,7 +11,7 @@ export class MovieCardComponent {
         id: '',
         title: '',
         poster: '',
-        listType: '',
+        listType: 'Favorites',
         overview: ''        
     }
 }

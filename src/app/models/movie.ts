@@ -15,4 +15,4 @@ export class Movie {
     }
 }
 
-type Lists = 'Favorites' | 'Launches' | 'Trending' | 'Upcoming' | 'TopRated' | '';
+type Lists = 'Favorites' | 'Launches' | 'Trending' | 'Upcoming' | 'TopRated';

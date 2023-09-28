@@ -12,6 +12,7 @@ import { MovieCardComponent } from './shared/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './views/movie-details/movie-details.component';
 import { MovieListComponent } from './shared/movie-list/movie-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
   
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
