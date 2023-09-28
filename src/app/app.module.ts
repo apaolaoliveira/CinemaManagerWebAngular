@@ -10,20 +10,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { MovieCardComponent } from './shared/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './views/movie-details/movie-details.component';
+import { MovieListComponent } from './shared/movie-list/movie-list.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    // shared
+    // core
     NavbarComponent,
+
+    // shared
     PaginationComponent,
     MovieCardComponent,
+    MovieListComponent,
     
-    // services
-    MovieDetailsComponent,
-
     // views
+    MovieDetailsComponent,
     HomeComponent
   ],
   
@@ -32,7 +35,11 @@ import { MovieDetailsComponent } from './views/movie-details/movie-details.compo
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    })  
   ],
   providers: [],
   bootstrap: [AppComponent]

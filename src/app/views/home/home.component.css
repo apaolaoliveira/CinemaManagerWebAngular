@@ -12,4 +12,5 @@
 
 .nav-item h2 {
     margin-left: 10px;
+    cursor: pointer;
 }
