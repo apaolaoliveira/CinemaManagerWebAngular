@@ -7,11 +7,5 @@ import { Movie } from 'src/app/models/movie';
     styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent {
-    @Input() movie: Movie = {
-        id: '',
-        title: '',
-        poster: '',
-        listType: 'Favorites',
-        overview: ''        
-    }
+    @Input({required:true}) movie = new Movie('', '', '', '');
 }

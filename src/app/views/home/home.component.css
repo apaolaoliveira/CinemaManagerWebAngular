@@ -6,10 +6,6 @@
     font-weight: 700;
 }
 
-.nav-item span{
-    color: var(--white);
-}
-
 .nav-item h2 {
     margin-left: 10px;
     cursor: pointer;

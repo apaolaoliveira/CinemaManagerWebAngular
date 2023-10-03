@@ -1,41 +1,55 @@
-<div class="container navbar-nav d-flex align-items-center">
-    <ul class="nav nav-underline text-warning">
-        <li class="nav-item">
+<div class="container navbar-nav align-items-center">
+    <ul class="nav-underline text-warning" ngbNav #nav="ngbNav" [activeId]="1">
+        <li [ngbNavItem]="1" >
             <i class="bi bi-lightning-charge"></i>
-            <h2 
-                routerLink="/popular"
-                class="nav-link fs-3 fw-bold my-2 text-warning"
-                routerLinkActive="active"
-                >Popular</h2>
-        </li>
+            <button 
+                ngbNavLink
+                class="fs-3 fw-bold mx-2 text-warning"
+                >Popular</button>
 
-        <li class="nav-item">
+            <ng-template ngbNavContent>
+                <app-movie-list listType="popular"></app-movie-list>
+            </ng-template>
+        </li>
+        
+        <li [ngbNavItem]="2">
+            <i class="bi bi-star"></i>
+            <button 
+            ngbNavLink
+            class="fs-3 fw-bold mx-2 text-warning" 
+            >Bem Avaliados</button>
+
+            <ng-template ngbNavContent>
+                <app-movie-list listType="topRated"></app-movie-list>
+            </ng-template>
+        </li>
+        
+        <li [ngbNavItem]="3">
             <i class="bi bi-clock"></i>
-            <h2 
-                routerLink="/launches"
-                class="nav-link fs-3 fw-bold my-2 text-warning" 
-                routerLinkActive="active"
-                >Lançamentos</h2>
-        </li>
+            <button 
+                ngbNavLink
+                class="nav-link fs-3 fw-bold mx-2 text-warning"
+                >Em breve</button>
 
-        <li class="nav-item">
-            <i class="bi bi-calendar3"></i>
-            <h2 
-                routerLink="/upcoming"
-                class="nav-link fs-3 fw-bold my-2 text-warning"
-                routerLinkActive="active"
-                >Em breve</h2>
+            <ng-template ngbNavContent>
+                <app-movie-list listType="upcoming"></app-movie-list>
+            </ng-template>
         </li>
-
-        <li class="nav-item">
-            <i class="bi bi-chat-heart"></i>
-            <h2 
-                routerLink="/favorites"
-                class="nav-link fs-3 fw-bold my-2 text-warning"
-                routerLinkActive="active"
-                >Favoritos</h2>
+        
+        <li [ngbNavItem]="4">
+            <i class="bi bi-suit-heart"></i>
+            <button 
+                ngbNavLink
+                class="nav-link fs-3 fw-bold mx-2 text-warning"
+                >Favoritos</button>
+            
+            <ng-template ngbNavContent>
+                <app-movie-list listType="favorites"></app-movie-list>
+            </ng-template>
         </li>
     </ul>
+    
+    <div class="mt-4" [ngbNavOutlet]="nav"></div>
 </div>
 
-<app-pagination></app-pagination>
+

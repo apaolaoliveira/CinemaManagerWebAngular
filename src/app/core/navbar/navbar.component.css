@@ -1,7 +1,6 @@
 .nav-item{
     display: flex;
     align-items: center;
-    margin: 10px;
     font-size: 20px;
     font-weight: 700;
 }
@@ -11,5 +10,5 @@
 }
 
 .nav-item a {
-    margin-left: 15px;
+    margin-left: 5px;
 }

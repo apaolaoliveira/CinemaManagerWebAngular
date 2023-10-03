@@ -1,19 +1,24 @@
-.movie-card {
-    position: relative;
+.app-movie-card-container {
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.movie-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 10px;
+.app-movie-card-container:hover {
+    transform: scale(1.02);    
+}
+
+.app-movie-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px #4b4b4b;
+}
+
+.app-movie-title {
     opacity: 0;
     transition: opacity 0.3s;
 }
 
-.movie-card:hover .movie-title {
+.app-movie-card-container:hover .app-movie-title {
     opacity: 1;
 }
+
+

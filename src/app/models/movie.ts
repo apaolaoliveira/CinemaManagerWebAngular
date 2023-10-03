@@ -4,15 +4,14 @@ export class Movie {
     overview: string;
     poster: string;
 
-    listType: Lists;
+    // listType: Lists;
 
-    constructor(id: string, title: string, overview: string, poster: string, listType: Lists){
+    constructor(id: string, title: string, overview: string, poster: string){
         this.id = id;
         this.title = title;
         this.overview = overview;
-        this.poster = poster;
-        this.listType = listType;
+        this.poster = 'https://image.tmdb.org/t/p/original/' + poster;
     }
 }
 
-type Lists = 'Favorites' | 'Launches' | 'Trending' | 'Upcoming' | 'TopRated';
+type Lists = 'Favorites' | 'TopRated' | 'Popular' | 'Upcoming' ;
