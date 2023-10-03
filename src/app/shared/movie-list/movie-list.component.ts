@@ -8,6 +8,7 @@ import { MovieService } from 'src/app/services/movie.service';
     styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit{
+    page: number = 1;
     movies: Movie[] = [];
 
     @Input() listType: 'popular' | 'topRated' | 'upcoming' | 'favorites' = 'popular';
@@ -15,6 +16,10 @@ export class MovieListComponent implements OnInit{
     constructor(private movieService: MovieService) {}
 
     ngOnInit(): void {
-        this.movieService.selectMoviesByList(this.listType).subscribe((res) => this.movies = res);
+        this.uploadPage(1);
+    }
+
+    uploadPage(changedPage: number){
+        this.movieService.selectMoviesByList(this.listType, changedPage).subscribe((res) => this.movies = res);
     }
 }

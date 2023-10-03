@@ -8,13 +8,10 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  popularMovies: Movie[] = [];
-  launchMovies: Movie[] = [];
+  
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.selectPopularMovies().subscribe((res) => this.popularMovies = res);
-    this.movieService.selectTopRatedMovies().subscribe((res) => this.launchMovies = res);
   }
 }

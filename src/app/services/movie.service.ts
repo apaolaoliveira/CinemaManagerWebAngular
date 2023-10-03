@@ -12,47 +12,23 @@ export class MovieService {
 
     constructor(private http: HttpClient){}
 
-    public selectPopularMovies(): Observable<Movie[]> {
-        const url = this.API_URL + 'popular?language=pt-BR'
-
-        return this.http.get<any>(url, this.getAuthorization())
-            .pipe(
-                map((res) => res.results),
-                map((obj) => this.MapMovies(obj))
-            );
-    }
-
-    public selectTopRatedMovies(): Observable<Movie[]>{
-        const url = this.API_URL + 'top_rated?language=pt-BR'
-
-        return this.http.get<any>(url, this.getAuthorization())
-            .pipe(
-                map((res) => res.results),
-                map((obj) => this.MapMovies(obj))
-            );
-    }
-
-    public selectMoviesByList(listType: string): Observable<Movie[]>{
+    public selectMoviesByList(listType: string, changedPage: number): Observable<Movie[]>{
         let type: string = '';
 
         switch(listType){
-            case 'popular':
-                type = 'popular?language=pt-BR';
-                break;
+            case 'popular': type = 'popular'; break;
 
-            case 'topRated':
-                type = 'top_rated?language=pt-BR';
-                break;
+            case 'topRated': type = 'top_rated'; break;
             
-            case 'upcoming':
-                type = 'upcoming?language=pt-BR';
-                break;
+            case 'upcoming': type = 'upcoming'; break;
 
-            case 'favorites':
-                break;
+            case 'favorites': break;
         }
 
-        const url = this.API_URL + type;
+        const apiVariables = `?page=${changedPage}` //&language=pt-BR
+        const url = this.API_URL + type + apiVariables;
+        console.log(url);
+
         return this.http.get<any>(url, this.getAuthorization())
             .pipe(
                 map((res) => res.results),
