@@ -6,6 +6,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
     background-color: rgb(37, 37, 37);
 }
 
@@ -14,6 +17,6 @@
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: var(--white);    
+    background-color: #dc3545;    
     border-radius: 50px;
 }

@@ -7,7 +7,6 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { HomeComponent } from './views/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { PaginationComponent } from './shared/pagination/pagination.component';
 import { MovieCardComponent } from './shared/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './views/movie-details/movie-details.component';
 import { MovieListComponent } from './shared/movie-list/movie-list.component';
@@ -22,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
 
     // shared
-    PaginationComponent,
     MovieCardComponent,
     MovieListComponent,
     

@@ -1,25 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { movieDetails } from 'src/app/models/movie-details';
+import { Component, Input, OnInit } from '@angular/core';
+import { MovieDetails } from 'src/app/models/movie-details';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
-export class MovieDetailsComponent {
-toggleFavorite(arg0: movieDetails) {
-throw new Error('Method not implemented.');
-}
-  @Input() movie: movieDetails = {
-    id: '',
-    title: '',
-    genres: [],
-    overview: '',
-    poster: '',
-    trailer: '',
-    launch: '',
-    votes: 0
+export class MovieDetailsComponent implements OnInit{
+  isFavorite: boolean = false;
+  movie: MovieDetails | undefined;
+
+  constructor(private movieService: MovieService){
+
   }
 
-  isFavorite: boolean = false;
+  ngOnInit(): void {
+    this.movieService.selectMovieDetails(5).subscribe((res) => {
+      this.movie = res;
+    });
+  }
 }
