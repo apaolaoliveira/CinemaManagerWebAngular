@@ -14,7 +14,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'movie/details',
+    path: 'movie/details/:id',
     component: MovieDetailsComponent
   }
 ];
@@ -23,13 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule implements OnInit {
-
-  constructor(){
-
-  }
-
-  ngOnInit(): void {
-    
-  }
-}
+export class AppRoutingModule {}

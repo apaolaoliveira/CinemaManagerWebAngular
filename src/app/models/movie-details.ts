@@ -2,7 +2,7 @@ import { MovieCredits } from "./movie-credits";
 import { MovieTrailer } from "./movie-trailer";
 
 export class MovieDetails {
-    id: string;
+    id: number;
     title: string;
     poster: string;
     votes: number;
@@ -14,7 +14,7 @@ export class MovieDetails {
     credits: MovieCredits[] = [];
 
     constructor(
-        id: string, 
+        id: number, 
         title: string,
         poster: string,
         votes: number,

@@ -1,16 +1,25 @@
 <div *ngIf="movie != undefined" class="row gap-3 text-light">
     <section aria-label="head" class="row">
         <div class="d-flex align-items-center">
-            <h1 class="text-danger fw-semibold m-0">{{ movie.title }}</h1>
+            <div class="me-auto text-start">
+                <h1 class="text-danger fw-semibold m-0">{{ movie.title }}</h1>
+                <small class="fw-bold fs-5 m-0">{{ movie.launch }}</small>
+            </div>
                 
             <div class="ms-auto text-end">
-                <a placement="right" aria-label="Add to favorites">
-                    <i class="bi bi-suit-heart fs-2 text-danger"></i>
+                <a (click)="manageFavorite()"
+                    [ngbTooltip]="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+                    placement="left" 
+                    aria-label="Add to favorites">
+                    <i 
+                        [ngClass]="isFavorite ? 'bi-suit-heart-fill' : 'bi-suit-heart'" 
+                        class="bi fs-2 text-danger" 
+                        style="cursor: pointer;">
+                    </i>
                 </a>
                 <p class="m-0">{{ movie.votes }} votes</p>
             </div>
         </div>
-        <small class="fw-bold fs-5 m-0">{{ movie.launch }}</small>
     </section>
 
     <section aria-label="media" class="row gap-3">
@@ -37,7 +46,7 @@
 
     <section class="row" aria-label="movies' credits">
         <div class="d-lg-flex fs-5">
-            <p class="fw-semibold">Diretor:</p>
+            <p class="fw-semibold me-3 text-danger">Director:</p>
 
             <div class="d-flex flex-wrap gap-3">
                 <div class="d-flex gap-3">
@@ -52,30 +61,32 @@
         </div>
 
         <hr />
-            <div class="d-lg-flex fs-5">
-                <p class="fs-5 fw-semibold">Escritores:</p>
 
-                <div class="d-flex flex-wrap gap-3">
-                    <div class="d-flex gap-3"  
-                        *ngFor="let credit of movie.writers.slice(0, 3);">
-
-                        <img 
-                        *ngIf="credit.profile && !credit.profile.includes('null')"
-                        [src]="credit.profile"
-                        class="app-icon rounded-circle">
-
-                        <p>{{ credit.name }}</p>
-                    </div>
-                </div>
-            </div>
-        <hr />
-
-        <div class="d-lg-flex fs-5 mb-5">
-            <p class="fs-5 fw-semibold">Elenco:</p>
+        <div class="d-lg-flex fs-5">
+            <p class="fs-5 fw-semibold me-3 text-danger">Actors:</p>
 
             <div class="d-flex flex-wrap gap-3">
                 <div class="d-flex gap-3"  
                     *ngFor="let credit of movie.actors.slice(0, 5);">
+
+                    <img 
+                    *ngIf="credit.profile && !credit.profile.includes('null')"
+                    [src]="credit.profile"
+                    class="app-icon rounded-circle">
+
+                    <p>{{ credit.name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="d-lg-flex fs-5 mb-5">
+            <p class="fs-5 fw-semibold me-3 text-danger">Writers:</p>
+
+            <div class="d-flex flex-wrap gap-3">
+                <div class="d-flex gap-3"  
+                    *ngFor="let credit of movie.writers.slice(0, 3);">
 
                     <img 
                     *ngIf="credit.profile && !credit.profile.includes('null')"

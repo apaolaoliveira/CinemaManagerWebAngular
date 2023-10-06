@@ -7,5 +7,5 @@ import { Movie } from 'src/app/models/movie';
     styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent {
-    @Input({required:true}) movie = new Movie('', '', '');
+    @Input({required:true}) movie = new Movie(0, '', '');
 }

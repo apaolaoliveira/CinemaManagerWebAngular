@@ -58,9 +58,9 @@ export class MovieService {
             case 'favorites': break;
         }
 
-        const apiVariables = `?page=${changedPage}` //&language=pt-BR
+        const apiVariables = `?page=${changedPage}`;
+
         const url = this.API_URL + type + apiVariables;
-        console.log(url);
 
         return this.http.get<any>(url, this.getAuthorization())
             .pipe(
