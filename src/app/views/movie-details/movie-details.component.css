@@ -1,0 +1,12 @@
+@media screen and (max-width: 800px){
+    .app-movie-trailer {
+        height: 250px;
+    }
+}
+
+.app-icon {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    margin-left: 10px;
+}

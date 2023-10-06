@@ -34,4 +34,16 @@ export class MovieDetails {
         this.trailers = trailers;
         this.credits = credits;
     }
+
+    get director(): MovieCredits | undefined {
+        return this.credits.find((d) => d.department == 'Directing');
+    }
+
+    get writers(): MovieCredits[] {
+        return this.credits.filter((d) => d.department == 'Writing');
+    }
+
+    get actors(): MovieCredits[] {
+        return this.credits.filter((d) => d.department == 'Acting');
+    }
 }

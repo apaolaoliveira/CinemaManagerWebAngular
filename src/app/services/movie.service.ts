@@ -4,6 +4,8 @@ import { Observable, map } from "rxjs";
 import { environment } from "src/environment/environment";
 import { Movie } from "../models/movie";
 import { MovieDetails } from "../models/movie-details";
+import { MovieTrailer } from "../models/movie-trailer";
+import { MovieCredits } from "../models/movie-credits";
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +16,7 @@ export class MovieService {
     constructor(private http: HttpClient){}
 
     public selectMovieDetails(id: number): Observable<MovieDetails>{
-        const url = `${this.API_URL}${id}`;
+        const url = `${this.API_URL}${id}?append_to_response=videos,credits`;
         
         return this.http.get<any>(url, this.getAuthorization())
         .pipe(map((obj) => this.mapMovieDetails(obj)));
@@ -29,9 +31,21 @@ export class MovieService {
             obj.overview,
             obj.genres,
             obj.release_date,
-            [],
-            []
+            this.mapMovieTrailer(obj.videos.results),
+            this.mapMovieCredits(obj.credits.crew.concat(obj.credits.cast))
         );
+    }
+
+    private mapMovieTrailer(objs: any[]): MovieTrailer[]{
+        return objs.map((obj) => {
+            return new MovieTrailer(obj.id, obj.key);
+        })
+    }
+
+    private mapMovieCredits(objs: any[]): MovieCredits[]{
+        return objs.map((obj) => {
+            return new MovieCredits(obj.order, obj.name, obj.known_for_department, obj.profile_path, obj.character);
+        })
     }
 
     public selectMoviesByList(listType: string, changedPage: number): Observable<Movie[]>{

@@ -1,4 +1,4 @@
-<div *ngIf="movie != undefined" class="row justify-content-center justify-content-lg-start gap-3 text-light mt-3">
+<div *ngIf="movie != undefined" class="row gap-3 text-light">
     <section aria-label="head" class="row">
         <div class="d-flex align-items-center">
             <h1 class="text-danger fw-semibold m-0">{{ movie.title }}</h1>
@@ -18,7 +18,11 @@
             <img [src]="movie.poster" class="img-fluid rounded-4" alt="poster" />
         </div>
 
-        <div class="col-lg"></div>
+        <div class="col-lg">
+            <div class="ratio ratio-21x9 h-100">
+                <iframe class="app-movie-trailer rounded-4" [src]="urlTrailer" allowfullscreen></iframe>
+            </div>
+        </div>
     </section>
 
     <div class="d-flex justify-content-center justify-content-lg-start gap-3">
@@ -34,16 +38,53 @@
     <section class="row" aria-label="movies' credits">
         <div class="d-lg-flex fs-5">
             <p class="fw-semibold">Diretor:</p>
+
+            <div class="d-flex flex-wrap gap-3">
+                <div class="d-flex gap-3">
+                    <img 
+                        *ngIf="movie.director?.profile && !movie.director?.profile?.includes('null')"
+                        [src]="movie.director?.profile"
+                        class="app-icon rounded-circle">
+                    
+                    <p>{{ movie.director?.name }}</p>
+                </div>
+            </div>
         </div>
 
         <hr />
             <div class="d-lg-flex fs-5">
                 <p class="fs-5 fw-semibold">Escritores:</p>
+
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="d-flex gap-3"  
+                        *ngFor="let credit of movie.writers.slice(0, 3);">
+
+                        <img 
+                        *ngIf="credit.profile && !credit.profile.includes('null')"
+                        [src]="credit.profile"
+                        class="app-icon rounded-circle">
+
+                        <p>{{ credit.name }}</p>
+                    </div>
+                </div>
             </div>
         <hr />
 
-        <div class="d-lg-flex fs-5">
+        <div class="d-lg-flex fs-5 mb-5">
             <p class="fs-5 fw-semibold">Elenco:</p>
+
+            <div class="d-flex flex-wrap gap-3">
+                <div class="d-flex gap-3"  
+                    *ngFor="let credit of movie.actors.slice(0, 5);">
+
+                    <img 
+                    *ngIf="credit.profile && !credit.profile.includes('null')"
+                    [src]="credit.profile"
+                    class="app-icon rounded-circle">
+
+                    <p>{{ credit.name }}</p>
+                </div>
+            </div>
         </div>
     </section>
 </div>
