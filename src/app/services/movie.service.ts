@@ -40,13 +40,25 @@ export class MovieService {
     private mapMovieTrailer(objs: any[]): MovieTrailer[]{
         return objs.map((obj) => {
             return new MovieTrailer(obj.id, obj.key);
-        })
+        });
     }
 
     private mapMovieCredits(objs: any[]): MovieCredits[]{
-        return objs.map((obj) => {
-            return new MovieCredits(obj.order, obj.name, obj.known_for_department, obj.profile_path, obj.character);
-        })
+        const uniqueCreditsSet = new Set(objs.map(obj => obj.name)); 
+
+        const uniqueCreditsArray = Array.from(uniqueCreditsSet);
+
+        return uniqueCreditsArray.map(name => {
+            const matchingObj = objs.find(obj => obj.name === name);
+
+            return new MovieCredits(
+                matchingObj.order,
+                matchingObj.name,
+                matchingObj.known_for_department,
+                matchingObj.profile_path,
+                matchingObj.character
+            );
+        });
     }
 
     public selectMoviesByList(listType: string, changedPage: number): Observable<Movie[]>{

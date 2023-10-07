@@ -67,7 +67,7 @@
 
             <div class="d-flex flex-wrap gap-3">
                 <div class="d-flex gap-3"  
-                    *ngFor="let credit of movie.actors.slice(0, 4); let i = index">
+                    *ngFor="let credit of movie.actors.slice(0, 5); let i = index">
 
                     <img 
                     *ngIf="credit.profile && !credit.profile.includes('null')"
@@ -75,7 +75,7 @@
                     class="app-icon rounded-circle">
 
                     <p>{{ credit.name }}</p>
-                    <span *ngIf="i < movie.actors.slice(0, 4).length - 1">•</span>
+                    <span *ngIf="i < movie.actors.slice(0, 5).length - 1">•</span>
                 </div>
             </div>
         </div>
