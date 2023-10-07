@@ -10,7 +10,7 @@ export class MovieListComponent implements OnInit{
     page: number = 1;
     movies: Movie[] = [];
 
-    @Input() listType: 'popular' | 'topRated' | 'upcoming' | 'favorites' = 'popular';
+    @Input() listType: 'popular' | 'topRated' | 'upcoming' = 'popular';
 
     constructor(private movieService: MovieService) {}
 

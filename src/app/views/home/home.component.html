@@ -44,7 +44,13 @@
                 >Favorites</button>
             
             <ng-template ngbNavContent>
-                <app-movie-list listType="favorites"></app-movie-list>
+                <div class="row g-4 mt-2 mb-5" >
+                    <app-movie-card 
+                        class="col-6 col-md-4 col-lg-3"
+                        *ngFor="let movie of favoriteMovies" 
+                        [movie]="movie"
+                    ></app-movie-card>
+                </div>                
             </ng-template>
         </li>
     </ul>

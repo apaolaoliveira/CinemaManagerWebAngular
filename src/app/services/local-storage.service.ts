@@ -27,7 +27,7 @@ export class LocalStorageService{
         this.save();
     }
 
-    private getFavorites(): Movie[]{
+    public getFavorites(): Movie[]{
         const data = this.localStorage.getItem(this.key);
 
         if(!data) return [];

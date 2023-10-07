@@ -55,7 +55,6 @@ export class MovieService {
             case 'popular': type = 'popular'; break;
             case 'topRated': type = 'top_rated'; break;            
             case 'upcoming': type = 'upcoming'; break;
-            case 'favorites': break;
         }
 
         const apiVariables = `?page=${changedPage}`;
