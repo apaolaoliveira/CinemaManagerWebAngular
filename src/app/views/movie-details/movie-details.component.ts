@@ -41,12 +41,9 @@ export class MovieDetailsComponent implements OnInit{
     if(this.isFavorite){
       this.localStorageService.unfavoriteMovie(this.movie!.id);
       this.toastService.success(`"${this.movie!.title}" was removed from favorites`, 'Success');
-
     } else {
-      const movieToFavorite = new Movie (this.movie!.id, this.movie!.title, this.movie!.poster);
-
-      this.localStorageService.favoriteMovie(movieToFavorite);
-      this.toastService.success(`"${movieToFavorite.title}" was added to favorites`, 'Success')
+      this.localStorageService.favoriteMovie(this.movie!);
+      this.toastService.success(`"${this.movie!.title}" was added to favorites`, 'Success')
     }
 
     this.toggleFavorite();

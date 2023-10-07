@@ -18,8 +18,9 @@ export class MovieService {
     public selectMovieDetails(id: number): Observable<MovieDetails>{
         const url = `${this.API_URL}${id}?append_to_response=videos,credits`;
         
-        return this.http.get<any>(url, this.getAuthorization())
-        .pipe(map((obj) => this.mapMovieDetails(obj)));
+        return this.http
+            .get<any>(url, this.getAuthorization())
+            .pipe(map((obj) => this.mapMovieDetails(obj)));
     }
 
     public mapMovieDetails(obj: any): MovieDetails{
@@ -57,9 +58,9 @@ export class MovieService {
             case 'upcoming': type = 'upcoming'; break;
         }
 
-        const apiVariables = `?page=${changedPage}`;
+        const apiVariables = type + `?page=${changedPage}`;
 
-        const url = this.API_URL + type + apiVariables;
+        const url = this.API_URL + apiVariables;
 
         return this.http.get<any>(url, this.getAuthorization())
             .pipe(
