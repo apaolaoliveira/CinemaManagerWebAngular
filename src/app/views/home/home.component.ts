@@ -9,10 +9,14 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class HomeComponent implements OnInit {
   favoriteMovies: Movie[] = [];
+  noFavorites: boolean = true;
 
   constructor(private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
     this.favoriteMovies = this.localStorageService.getFavorites();
+
+    if(this.favoriteMovies.length > 0)
+      this.noFavorites = false;
   }
 }

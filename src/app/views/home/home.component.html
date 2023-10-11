@@ -44,6 +44,11 @@
                 >Favorites</button>
             
             <ng-template ngbNavContent>
+                <p 
+                    class="my-5 text-danger fs-4"
+                    *ngIf="noFavorites"
+                    >You don't have any favorite movie yet.</p>
+
                 <div class="row g-4 mb-5">
                     <app-movie-card 
                         class="col-6 col-md-4 col-lg-3"

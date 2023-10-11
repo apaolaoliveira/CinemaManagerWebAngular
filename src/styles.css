@@ -12,6 +12,10 @@ body {
     background-color: rgb(37, 37, 37);
 }
 
+html, body {
+    height: 100%;
+}
+
 ::-webkit-scrollbar{
     width: 7px; 
 }
